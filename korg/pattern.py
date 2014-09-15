@@ -47,7 +47,7 @@ class PatternRepo(object):
     def _load_pattern_file(self, filename, pattern_dict):
         pattern_re = regex.compile("^(?P<patname>\w+) (?P<pattern>.+)$")
         with open(filename) as f:
-            lines = f.readlines()
+            lines = f.read().splitlines()
         for line in lines:
             m = pattern_re.search(line)
             if m:
