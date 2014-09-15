@@ -292,3 +292,11 @@ def it_allows_dashes_in_capture_names():
 
     print 'subject: %s' % subject
     expect(subject["foo-bar"]).to_equal("hello")
+
+# Error checking
+
+@test
+@Vows.capture_error
+def it_raises_an_error_when_a_pattern_is_not_found():
+    pr = PatternRepo(['patterns/'])
+    expect(LineGrokker('%{SPAM_LOVELY_SPAM}', pr)).to_be_an_error_like(KeyError)

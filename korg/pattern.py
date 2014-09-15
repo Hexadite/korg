@@ -35,6 +35,8 @@ class PatternRepo(object):
                         repl = self.pattern_dict[md['patname']]
                     # print "Replacing %s with %s"  %(md['substr'], repl)
                     pattern = pattern.replace(md['substr'],repl)
+                else:
+                    raise KeyError("Pattern '%s' not in pattern dictionary" % md['patname'])
         # print 'pattern: %s' % pattern
         return regex.compile(pattern, flags)
 
