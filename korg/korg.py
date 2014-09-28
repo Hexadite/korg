@@ -12,6 +12,8 @@ class LineGrokker(object):
         if m:
             return m.groupdict()
 
+    def find_all(self, data):
+        return map(lambda x: {"position": x.start(), "value": x.group()}, self.regex.finditer(data))
 
 if __name__ == "__main__":
     GLOBALPM = {
