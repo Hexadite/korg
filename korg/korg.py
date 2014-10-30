@@ -10,7 +10,7 @@ class LineGrokker(object):
     def grok(self, data):
         m = self.regex.search(data)
         if m:
-            return m.groupdict()
+            return m.capturesdict()
 
     def find_all(self, data):
         return map(lambda x: {"position": x.start(), "value": x.group()}, self.regex.finditer(data))
