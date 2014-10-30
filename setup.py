@@ -17,7 +17,7 @@ setup(
     long_description=open('README.md').read(),
     url='https://github.com/aogaeru/korg',
     name='korg',
-    version='0.0.5',
+    version='0.0.6',
     packages=['korg'],
     data_files=[('patterns', find_pattern_files()), 'README.md'],
     install_requires=['regex >= 2013-06-05'],
