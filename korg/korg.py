@@ -7,10 +7,21 @@ class LineGrokker(object):
     def __init__(self, pattern, pattern_repo):
         self.regex = pattern_repo.compile_regex(pattern)
 
-    def grok(self, data):
+    def grok(self, data, find_all=False):
         m = self.regex.search(data)
         if m:
-            return m.capturesdict()
+            if not find_all:
+                return m.capturesdict()
+            else:
+                res = []
+                res.append(m.capturesdict())
+                pos = m.span()[1]
+                x = self.regex.search(data[pos:])
+                while x:
+                    res.append(x.capturesdict())
+                    pos += x.span()[1]
+                    x = self.regex.search(data[pos:])
+                return res
 
     def find_all(self, data):
         return map(lambda x: {"position": x.start(), "value": x.group()}, self.regex.finditer(data))
