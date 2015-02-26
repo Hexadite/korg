@@ -4,8 +4,8 @@ from pattern import PatternRepo
 
 class LineGrokker(object):
     # TODO: can't say if this is a useful interface. Please provide feedback on any thoughts.
-    def __init__(self, pattern, pattern_repo):
-        self.regex = pattern_repo.compile_regex(pattern)
+    def __init__(self, pattern, pattern_repo, flags=regex.IGNORECASE):
+        self.regex = pattern_repo.compile_regex(pattern, flags)
 
     def grok(self, data, find_all=False):
         m = self.regex.search(data)
