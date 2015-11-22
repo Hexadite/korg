@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 import re
 import os
-#from distutils.core import setup
 from setuptools import setup
 
 
 def find_pattern_files():
-    return [os.path.join('patterns', file) for file in os.listdir('patterns')
-        if re.match(r'^[\w-]+$', file)]
+    return [os.path.join('patterns', f) for f in os.listdir('patterns')
+            if re.match(r'^[\w-]+$', f)]
+
 
 setup(
     author='Mark Fink',
@@ -17,7 +17,7 @@ setup(
     long_description=open('README.md').read(),
     url='https://github.com/aogaeru/korg',
     name='hexadite_korg',
-    version='0.0.9',
+    version='0.0.10',
     packages=['korg'],
     data_files=[('patterns', find_pattern_files()), 'README.md'],
     install_requires=['regex >= 2013-06-05'],

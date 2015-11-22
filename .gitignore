@@ -21,3 +21,4 @@ distribute*.gz
 
 # Single Files
 .coverage
+.idea/
