@@ -31,8 +31,8 @@ class LineGrokker(object):
 
         res = [m.capturesdict()]
         # keep iterating until end of data
-        while m.endpos < len(data):
-            m = self.regex.search(data, m.endpos)
+        while m.end() < len(data):
+            m = self.regex.search(data, m.end())
             if not m:
                 break
             res.append(m.capturesdict())
